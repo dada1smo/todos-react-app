@@ -19,7 +19,10 @@ function App() {
     <>
       <GlobalStyles />
       <Routes>
-        <Route path="/" element={token.length > 0 ? <Todos /> : <Login />} />
+        <Route
+          path="/"
+          element={token && token.length > 0 ? <Todos /> : <Login />}
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/todos" element={<Todos />} />
