@@ -13,13 +13,16 @@ export default function Signup() {
     email: '',
     password: '',
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const onSubmitSignUp = async (e) => {
     e.preventDefault();
     try {
+      setError(null);
       await Api.signUp(signupData);
+
+      navigate('/');
     } catch (error) {
       setError(error.data.msg);
     } finally {
@@ -28,11 +31,8 @@ export default function Signup() {
         email: '',
         password: '',
       });
-      navigate('/');
     }
   };
-
-  console.log(error);
 
   return (
     <Wrapper>
